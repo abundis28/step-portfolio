@@ -27,7 +27,7 @@ body{
 }
  
 #title{
-    background: rgba(0, 160, 178, 0.7):
+    background: rgba(0, 160, 178, 0.7);
     text-align: center;
 }
  
@@ -36,7 +36,16 @@ h1{
 }
  
 #text{
-    Background: rgba(255,255,255,0.7); 
+    background: rgba(255,255,255,0.7); 
+}
+
+#image-container{
+    width: 20em;
+}
+ 
+#selfie{
+    object-fit: contain;
+    max-width: 100%;
 }
 
 #greeting-container {
