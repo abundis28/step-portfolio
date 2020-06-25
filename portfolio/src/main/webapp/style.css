@@ -4,6 +4,30 @@
   width: 650px;
 }
 
+body{
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(45deg,
+      rgba(20, 18, 19, 0.9) 30%,
+      rgba(0, 94, 105, 0.9) 100%),
+    url(Images/github_pattern.svg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#title{
+    background: rgba(0, 160, 178, 0.7);
+    text-align: center;
+}
+ 
+h1{
+    color: white;
+}
+ 
+#text{
+    Background: rgba(255,255,255,0.7); 
+}
+
 #greeting-container {
   margin-top: 20px;
 }
