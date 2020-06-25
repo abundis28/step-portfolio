@@ -25,7 +25,7 @@ h1{
 }
  
 #text{
-    Background: rgba(255,255,255,0.7); 
+    background: rgba(255,255,255,0.7); 
 }
 
 #image-container{
@@ -38,6 +38,11 @@ h1{
     margin-bottom: 10px;
 }
 
-#greeting-container {
-  margin-top: 20px;
+#language-container {
+    margin-top: 20px;
+}
+
+.end{
+    margin-bottom: 15px;
+    background: rgba(255,255,255,0.7);
 }
