@@ -28,6 +28,16 @@ h1{
     Background: rgba(255,255,255,0.7); 
 }
 
+#image-container{
+    width: 20em;
+}
+ 
+#selfie{
+    object-fit: contain;
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
 #greeting-container {
   margin-top: 20px;
 }
