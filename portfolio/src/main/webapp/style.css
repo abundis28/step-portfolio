@@ -4,12 +4,12 @@
   width: 650px;
 }
 
-html{
+html {
   height: 100%;
   width: 100%;
 }
  
-body{
+body {
 	background: linear-gradient(45deg,
 		rgba(20,18,19,.9) 30%,
 		rgba(0,94,105,.9) 100%),
@@ -20,24 +20,24 @@ body{
 	margin: 0;
 }
  
-#title{
+#title {
   text-align: center;
 }
  
-h1{
+h1 {
   color: white;
 }
 
-#text{
+#text {
 	background: rgba(255,255,255,.7); 
 	display: inline-block;
 }
 
-#image-container{
+#image-container {
   width: 20em;
 }
  
-#selfie{
+#selfie {
 	object-fit: contain;
 	max-width: 100%;
 }
