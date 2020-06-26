@@ -10,14 +10,14 @@ html{
 }
  
 body{
-	height: 100%;
-	margin: 0;
 	background: linear-gradient(45deg,
 		rgba(20,18,19,.9) 30%,
 		rgba(0,94,105,.9) 100%),
 	url(Images/github_pattern.svg);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	height: 100%;
+	margin: 0;
 }
  
 #title{
@@ -43,8 +43,8 @@ h1{
 }
 
 #language-container {
-  margin-top: 20px;
-	margin-bottom: 15px;
+  background-color: rgba(255,255,255,.7);
 	display: inline-block;
-	background-color: rgba(255,255,255,.7);
+	margin-top: 20px;
+	margin-bottom: 15px;
 }
