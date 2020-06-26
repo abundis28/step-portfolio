@@ -16,7 +16,6 @@ body {
 	url(Images/github_pattern.svg);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	height: 100%;
 	margin: 0;
 }
  
@@ -33,7 +32,7 @@ h1 {
 	display: inline-block;
 }
 
-#image-container {
+#selfie-container {
   width: 20em;
 }
  
