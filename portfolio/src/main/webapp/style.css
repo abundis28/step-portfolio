@@ -20,12 +20,6 @@ body{
 	background-attachment: fixed;
 }
  
-#content {
-	margin-left: auto;
-	margin-right: auto;
-	width: 650px;
-}
- 
 #title{
   text-align: center;
 }
