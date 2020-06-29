@@ -1,5 +1,5 @@
 #barTop{
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 #content {
@@ -9,50 +9,50 @@
 }
 
 html{
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
  
 body{
-    height: 100%;
-    margin: 0;
-    background: linear-gradient(45deg,
-      rgba(20, 18, 19, 0.9) 30%,
-      rgba(0, 94, 105, 0.9) 100%),
-    url(Images/github_pattern.svg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(45deg,
+   rgba(20, 18, 19, 0.9) 30%,
+   rgba(0, 94, 105, 0.9) 100%),
+  url(Images/github_pattern.svg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
  
 #content {
-    margin-left: auto;
-    margin-right: auto;
-    width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
 }
  
 #title{
-    background: rgba(0, 160, 178, 0.7);
-    text-align: center;
-    margin-bottom: 15px;
+  background: rgba(0, 160, 178, 0.7);
+  text-align: center;
+  margin-bottom: 15px;
 }
  
 h1{
-    color: white;
+  color: white;
 }
  
 #text{
-    background: rgba(255,255,255,0.7); 
+  background: rgba(255,255,255,0.7); 
 }
 
 #image-container{
-    width: 20em;
+  width: 20em;
 }
  
 #selfie{
-    object-fit: contain;
-    max-width: 100%;
+  object-fit: contain;
+  max-width: 100%;
 }
 
 #language-container {
-    margin-top: 20px;
+  margin-top: 20px;
 }
