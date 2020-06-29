@@ -1,4 +1,4 @@
-#barTop{
+#barTop {
   margin-bottom: 15px;
 }
 
@@ -8,51 +8,46 @@
   width: 650px;
 }
 
-html{
+html {
   height: 100%;
   width: 100%;
 }
- 
-body{
-  height: 100%;
-  margin: 0;
+
+body {
   background: linear-gradient(45deg,
-   rgba(20, 18, 19, 0.9) 30%,
-   rgba(0, 94, 105, 0.9) 100%),
+  rgba(20,18,19,.9) 30%,
+  rgba(0,94,105,.9) 100%),
   url(Images/github_pattern.svg);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  margin: 0;
 }
  
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
-}
- 
-#title{
-  background: rgba(0, 160, 178, 0.7);
+#title {
   text-align: center;
-  margin-bottom: 15px;
 }
  
-h1{
+h1 {
   color: white;
 }
- 
-#text{
-  background: rgba(255,255,255,0.7); 
+
+#text {
+  background: rgba(255,255,255,.7); 
+  display: inline-block;
 }
 
-#image-container{
+#selfie-container {
   width: 20em;
 }
  
-#selfie{
-  object-fit: contain;
+#selfie {
   max-width: 100%;
+  object-fit: contain;
 }
 
 #language-container {
+  background-color: rgba(255,255,255,.7);
+  display: inline-block;
   margin-top: 20px;
+  margin-bottom: 15px;
 }

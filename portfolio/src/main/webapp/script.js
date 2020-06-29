@@ -17,10 +17,10 @@
  */
 function addRandomLanguage() {
   const languages =
-      ['Español', 'English', 'Deutsch'];
+  	['Español','English','Deutsch'];
  
   // Pick a random language.
-  const language = languages[Math.floor(Math.random() * languages.length)];
+  const language = languages[Math.floor(Math.random()*languages.length)];
  
   // Add it to the page.
   const languageContainer = document.getElementById('language-container');
