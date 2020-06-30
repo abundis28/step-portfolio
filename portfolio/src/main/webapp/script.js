@@ -26,3 +26,9 @@ function addRandomLanguage() {
   const languageContainer = document.getElementById('language-container');
   languageContainer.innerText = language;
 }
+
+async function showContent() {
+  const response = await fetch('/data');
+  const content = await response.text();
+  document.getElementById('content-container').innerText = content;
+}
