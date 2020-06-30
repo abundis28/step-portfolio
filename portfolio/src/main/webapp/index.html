@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="showContent()">
     <div id="content">
       <div id="title">
         <h1>Welcome to the Portfolio of Andrés Abundis</h1>
@@ -20,9 +20,8 @@
         <button onclick="addRandomLanguage()">Click!</button>
         <div id="language-container"></div>
       </div>
-      <div>
-        <p id="text">Click <a href="/data">here</a> to demo the Java servlet.</p>
-      </div>
+      <!-- Container used to display the returned greeting from showContent() -->
+      <div id="content-container"></div>
     </div>
   </body>
 </html>
