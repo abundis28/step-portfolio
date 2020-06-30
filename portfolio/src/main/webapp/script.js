@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Adds a random language to the page.
  */
 function addRandomLanguage() {
   const languages =
@@ -27,6 +27,9 @@ function addRandomLanguage() {
   languageContainer.innerText = language;
 }
 
+/**
+ * Adds a greeting with my name to the page.
+ */
 async function showContent() {
   const response = await fetch('/data');
   const content = await response.text();
