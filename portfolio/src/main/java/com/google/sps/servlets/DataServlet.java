@@ -13,17 +13,18 @@
 // limitations under the License.
  
 package com.google.sps.servlets;
- 
-import java.io.IOException;
+
 import com.google.gson.Gson;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
  
-/** Servlet that returns a greeting with my name. TODO(aabundis): modify this file to handle comments data */
+/** Servlet that returns a JSON string with quotes.
+    TODO(aabundis): modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
  
