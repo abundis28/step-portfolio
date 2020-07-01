@@ -34,7 +34,6 @@ function showContent() {
   fetch('/data').then(response => response.json()).then((content) => {
     const messagesElement = document.getElementById('content-container');
     messagesElement.innerHTML = '';
-    const contentLength = content.length;
     for (const message of content) {
       messagesElement.appendChild(createListElement(message));
     }
