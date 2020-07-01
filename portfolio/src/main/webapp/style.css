@@ -58,3 +58,7 @@ h1 {
 .subtitle{
   margin-bottom: 0;
 }
+
+ol{
+  padding-right: 25px;
+}
