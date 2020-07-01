@@ -28,10 +28,25 @@ function addRandomLanguage() {
 }
 
 /**
- * Adds a greeting with my name to the page.
+ * Appends messages in servlet as children list elements to the page.
  */
-async function showContent() {
-  const response = await fetch('/data');
-  const content = await response.text();
-  document.getElementById('content-container').innerText = content;
+function showContent() {
+  fetch('/data').then(response => response.json()).then((content) => {
+    const messagesElement = document.getElementById('content-container');
+    messagesElement.innerHTML = '';
+    const contentLength = content.length;
+    let i;
+    for(i = 1; i < contentLength+1; i++){
+      messagesElement.appendChild(createListElement('Quote #' + i + ':  ' + content[i-1]));
+    }
+  });
+}
+
+/**
+ * Creates an <li> element containing text.
+ */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
