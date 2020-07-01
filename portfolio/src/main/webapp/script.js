@@ -35,9 +35,8 @@ function showContent() {
     const messagesElement = document.getElementById('content-container');
     messagesElement.innerHTML = '';
     const contentLength = content.length;
-    let i;
-    for(i = 1; i < contentLength+1; i++){
-      messagesElement.appendChild(createListElement('Quote #' + i + ':  ' + content[i-1]));
+    for (const message of content) {
+      messagesElement.appendChild(createListElement(message));
     }
   });
 }
