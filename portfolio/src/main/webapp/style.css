@@ -8,7 +8,7 @@ html {
   height: 100%;
   width: 100%;
 }
- 
+
 body {
   background: linear-gradient(45deg,
   rgba(20,18,19,.9) 30%,
@@ -18,11 +18,11 @@ body {
   background-attachment: fixed;
   margin: 0;
 }
- 
+
 #title {
   text-align: center;
 }
- 
+
 h1 {
   color: white;
 }
@@ -35,7 +35,7 @@ h1 {
 #selfie-container {
   width: 20em;
 }
- 
+
 #selfie {
   max-width: 100%;
   object-fit: contain;
