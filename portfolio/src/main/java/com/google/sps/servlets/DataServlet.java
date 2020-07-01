@@ -52,7 +52,6 @@ public class DataServlet extends HttpServlet {
    */
   private String convertToJsonUsingGson() {
     Gson gson = new Gson();
-    String json = gson.toJson(messages);
-    return json;
+    return gson.toJson(messages);
   }
 }
