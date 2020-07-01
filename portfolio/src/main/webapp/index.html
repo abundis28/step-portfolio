@@ -25,6 +25,7 @@
         </div>
       </nav>
     </div>
+  <body onload="showContent()">
     <div id="content">
       <div id="title">
         <h1>Welcome to the Portfolio of Andrés Abundis</h1>
@@ -33,9 +34,13 @@
       <div id="selfie-container">
         <img src="Images/security.jpg" id="selfie" alt="Photo of Andrés in a small mexican town."/>
       </div>
-      <p id="text">Click here to get a random language that I speak:</p>
-      <button onclick="addRandomLanguage()">Click!</button>
-      <div id="language-container"></div>
+      <div>
+        <p id="text">Click here to get a random language that I speak:</p>
+        <button onclick="addRandomLanguage()">Click!</button>
+        <div id="language-container"></div>
+      </div>
+      <!-- Container used to display the returned greeting from showContent() -->
+      <div id="content-container"></div>
     </div>
   </body>
 </html>
