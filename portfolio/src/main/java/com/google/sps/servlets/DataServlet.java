@@ -25,7 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
 
 /** Servlet that returns a JSON string with quotes.
     TODO(aabundis): modify this file to handle comments data */
