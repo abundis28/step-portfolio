@@ -28,14 +28,14 @@ function addRandomLanguage() {
 }
 
 /**
- * Appends messages in servlet as children list elements to the page.
+ * Appends previously made comments that populated the servlet as children list elements to the page.
  */
-function showContent() {
-  fetch('/data').then(response => response.json()).then((content) => {
-    const messagesElement = document.getElementById('content-container');
-    messagesElement.innerHTML = '';
-    for (const message of content) {
-      messagesElement.appendChild(createListElement(message));
+function showComments() {
+  fetch('/data').then(response => response.json()).then((commentsJson) => {
+    const commentsElement = document.getElementById('content-container');
+    commentsElement.innerHTML = '';
+    for (const comment of commentsJson) {
+      commentsElement.appendChild(createListElement(comment));
     }
   });
 }
