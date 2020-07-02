@@ -27,6 +27,19 @@
         </div>
       </nav>
     </div>
+    <div id="content">
+      <div id="title">
+        <h1>Comments</h1>
+      </div>
+      <form action="/data" method="POST">
+        <!-- TODO(aabundis): Add pseudonym feature to identify owner of comment. -->
+        <div class="form-group">
+          <label for="textarea"><h3 class="subtitle">Leave your comment:</h3></label>
+          <textarea class="form-control" name="textarea" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-light">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
  
