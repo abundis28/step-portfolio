@@ -28,16 +28,7 @@ import java.util.List;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private List<String> messages;
-
-  @Override
-  public void init() {
-    // Create new ArrayList and add messages.
-    messages = new ArrayList<>();
-    messages.add("The world is mine for the taking, make me king. -Eminem");
-    messages.add("Success is my only option, failure is not. -Eminem");
-    messages.add("I made it out of that world and found a place in this world. -Eminem");
-  }
+  private List<String> comments = new ArrayList<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -47,11 +38,20 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Retreives textarea values.
+    String comment = request.getParameter("textarea");
+    // TODO(aabundis): Verify that a comment was written, no empty submissions.
+    comments.add(comment);
+    response.sendRedirect("/comments.html");
+  }
+
   /**
    * Converts an ArrayList of messages into a JSON string using the Gson library.
    */
   private String convertToJsonUsingGson() {
     Gson gson = new Gson();
-    return gson.toJson(messages);
+    return gson.toJson(comments);
   }
 }
