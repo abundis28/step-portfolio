@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 /** Servlet that returns a JSON string with quotes.
     TODO(aabundis): modify this file to handle comments data */
@@ -43,10 +44,23 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Retreives textarea values.
+    // Retreives the entry values.
     String comment = request.getParameter("textarea");
+    String firstName = request.getParameter("firstName");
+    String lastName = request.getParameter("lastName");
     // TODO(aabundis): Verify that a comment was written, no empty submissions.
-    comments.add(comment);
+
+    // Creates an Entity for each comment entry.
+    Entity entryEntity = new Entity("entry");
+    entryEntity.setProperty("firstN",firstName);
+    entryEntity.setProperty("lastN",lastName);
+    entryEntity.setProperty("com",comment);
+
+    // Declares an instance of the Datastore service and inserts Entity.
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(entryEntity);
+    
+    // Redirect to comments page to visualize comment.
     response.sendRedirect("/comments.html");
   }
 

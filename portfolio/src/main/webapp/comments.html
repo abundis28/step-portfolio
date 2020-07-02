@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </head>
-  <body onload="showComments()">
+  <body>
     <div id="barTop">
       <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #004047">
         <a class="navbar-brand" href="index.html">Andrés's Portfolio</a>
@@ -32,13 +32,23 @@
         <h1>Comments</h1>
       </div>
       <form action="/data" method="POST">
-        <!-- TODO(aabundis): Add pseudonym feature to identify owner of comment. -->
+        <h3 class="subtitle">Name:</h3>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First name" name="firstName">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last name" name="lastName">
+          </div>
+        </div>
         <div class="form-group">
           <label for="textarea"><h3 class="subtitle">Leave your comment:</h3></label>
           <textarea class="form-control" name="textarea" rows="3"></textarea>
         </div>
         <button type="submit" class="btn btn-light">Submit</button>
       </form>
+      <!-- To see admin page, uncomment next line. -->
+      <!-- <a href="/_ah/admin" id="text">View admin page.</a> -->
       <h3 class="subtitle">Past comments:</h3>
       <!-- Container used to display the returned list children from showContent() -->
       <div>
