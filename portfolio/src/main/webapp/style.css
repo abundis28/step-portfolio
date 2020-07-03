@@ -73,3 +73,16 @@ ol{
 label{
   margin-bottom: 0;
 }
+
+.homepage{
+  justify-content: center;
+}
+
+.container-fluid{
+  padding-top: 3%;
+  align-items: center;
+}
+
+.btn{
+  margin: 0 10px;
+}
