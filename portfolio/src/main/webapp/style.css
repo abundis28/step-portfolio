@@ -28,8 +28,7 @@ body {
 }
 
 h1,
-h3,
-h5 {
+h3 {
   color: white;
 }
 
@@ -62,19 +61,23 @@ h5 {
   width: 100%;
 }
 
-.subtitle{
+.subtitle {
   margin-top: 20px;
   margin-bottom: 5px;
 }
 
-ol{
+ol {
   padding-right: 25px;
 }
 
-label{
+label {
   margin-bottom: 0;
 }
 
-.container{
+.container {
   padding: 0 0;
+}
+
+.note-btns {
+  color: white;
 }
