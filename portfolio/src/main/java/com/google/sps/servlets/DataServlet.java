@@ -48,7 +48,7 @@ public class DataServlet extends HttpServlet {
       String comment = (String) entity.getProperty("com");
       String firstN = (String) entity.getProperty("firstN");
       String lastN = (String) entity.getProperty("lastN");
-      comments.add(firstN+" "+lastN+" // "+comment);
+      comments.add(firstN+" "+lastN+":\n"+comment);
     }
     
     String json = convertToJsonUsingGson();
