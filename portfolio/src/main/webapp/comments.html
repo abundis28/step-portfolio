@@ -43,16 +43,40 @@
         </div>
         <div class="form-group">
           <label for="textarea"><h3 class="subtitle">Leave your comment:</h3></label>
-          <textarea class="form-control" name="textarea" rows="3"></textarea>
+          <textarea class="form-control" name="textarea" rows="3" 
+              placeholder="Leave a comment!"></textarea>
         </div>
         <button type="submit" class="btn btn-light">Submit</button>
       </form>
       <!-- To see admin page, uncomment next line. -->
       <!-- <a href="/_ah/admin" id="text">View admin page.</a> -->
-      <h3 class="subtitle">Past comments:</h3>
-      <!-- Container used to display the returned list children from showContent() -->
-      <div>
-        <ul id="content-container" class="list-group"></ul>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3 class="subtitle">Past comments:</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 note-btns">
+            <h5>Select amount of comments to show:</h5>
+          </div>
+          <div class="col-4">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-light">3</button>
+                <button type="button" class="btn btn-outline-light">5</button>
+                <button type="button" class="btn btn-outline-light">10</button>
+                <button type="button" class="btn btn-outline-light">15</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <!-- Container used to display the returned list children from showContent() -->
+            <ul id="content-container" class="list-group"></ul>
+          </div>
+        </div>
       </div>
     </div>
   </body>
