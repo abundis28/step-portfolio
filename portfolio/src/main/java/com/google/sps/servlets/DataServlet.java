@@ -46,13 +46,14 @@ public class DataServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
     // TODO(aabundis): Find efficient way other than clearing arrayList and then filling up again.
     comments.clear();
-    for (Entity entity : results.asList(FetchOptions.Builder.withLimit(3))) {
+    int limit = toInt(request.getParameter("max"));
+    for (Entity entity : results.asList(FetchOptions.Builder.withLimit(limit))) {
       String comment = (String) entity.getProperty("com");
       String firstN = (String) entity.getProperty("firstN");
       String lastN = (String) entity.getProperty("lastN");
       comments.add(firstN+" "+lastN+":\n"+comment);
     }
-    
+
     String json = convertToJsonUsingGson();
     // Send the JSON as the response.
     response.setContentType("application/json;");
@@ -86,5 +87,17 @@ public class DataServlet extends HttpServlet {
   private String convertToJsonUsingGson() {
     Gson gson = new Gson();
     return gson.toJson(comments);
+  }
+
+  /**
+   * Converts an string to an integer.
+   */
+  private int toInt(String str) {
+    try {
+      return Integer.parseInt(str);
+    } catch (NumberFormatException e) {
+      // Return 3 as a default because no selection has been made.
+      return 3;
+    }
   }
 }

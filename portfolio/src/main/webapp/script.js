@@ -30,8 +30,11 @@ function addRandomLanguage() {
 /**
  * Appends previously made comments that populated the servlet as children list elements to the page.
  */
-function showComments() {
-  fetch('/data').then(response => response.json()).then((commentsJson) => {
+function showComments(val) {
+  if(val == "") {
+    val = 0;
+  }
+  fetch('/data?max='+val).then(response => response.json()).then((commentsJson) => {
     const commentsElement = document.getElementById('content-container');
     commentsElement.innerHTML = '';
     for (const comment of commentsJson) {
