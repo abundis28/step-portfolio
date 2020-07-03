@@ -17,6 +17,7 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.PreparedQuery;
@@ -43,8 +44,9 @@ public class DataServlet extends HttpServlet {
     // Prepares results and sorts them in descending order.
     Query query = new Query("entry").addSort("timestamp", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
+    // TODO(aabundis): Find efficient way other than clearing arrayList and then filling up again.
     comments.clear();
-    for (Entity entity : results.asIterable()) {
+    for (Entity entity : results.asList(FetchOptions.Builder.withLimit(3))) {
       String comment = (String) entity.getProperty("com");
       String firstN = (String) entity.getProperty("firstN");
       String lastN = (String) entity.getProperty("lastN");
