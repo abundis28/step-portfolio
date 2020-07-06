@@ -30,8 +30,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Servlet that returns a JSON string with quotes.
-    TODO(aabundis): modify this file to handle comments data */
+/** Servlet that allows client to post a comment and see 
+    previous made comments by other clients */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
