@@ -46,7 +46,7 @@ public class DataServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
     // TODO(aabundis): Find efficient way other than clearing arrayList and then filling up again.
     comments.clear();
-    int limit = toInt(request.getParameter("max"));
+    int limit = numCommentsValueStringToInt(request.getParameter("max"));
     for (Entity entity : results.asList(FetchOptions.Builder.withLimit(limit))) {
       String comment = (String) entity.getProperty("comment");
       String firstN = (String) entity.getProperty("firstName");
@@ -90,9 +90,10 @@ public class DataServlet extends HttpServlet {
   }
 
   /**
-   * Converts an string to an integer.
+   * Converts the string declared as value for each of the selections in the button 
+      group in the comments.html file.
    */
-  private int toInt(String str) {
+  private int numCommentsValueStringToInt(String str) {
     try {
       return Integer.parseInt(str);
     } catch (NumberFormatException e) {
