@@ -58,7 +58,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Retreives the entry values.
+    // Retrieves the entry values.
     String comment = request.getParameter("textarea");
     String firstName = request.getParameter("firstName");
     String lastName = request.getParameter("lastName");
