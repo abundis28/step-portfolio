@@ -46,5 +46,6 @@ function showComments() {
 function createListElement(text) {
   const liElement = document.createElement('li');
   liElement.innerText = text;
+  liElement.setAttribute("class","list-group-item")
   return liElement;
 }

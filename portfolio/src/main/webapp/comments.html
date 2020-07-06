@@ -32,17 +32,27 @@
         <h1>Comments</h1>
       </div>
       <form action="/data" method="POST">
-        <!-- TODO(aabundis): Add pseudonym feature to identify owner of comment. -->
+        <h3 class="subtitle">Name:</h3>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First name" name="firstName">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last name" name="lastName">
+          </div>
+        </div>
         <div class="form-group">
           <label for="textarea"><h3 class="subtitle">Leave your comment:</h3></label>
           <textarea class="form-control" name="textarea" rows="3"></textarea>
         </div>
         <button type="submit" class="btn btn-light">Submit</button>
       </form>
+      <!-- (FOR DEV PURPOSES) To see admin page, uncomment next line. -->
+      <!-- <a href="/_ah/admin" id="text">View admin page.</a> -->
       <h3 class="subtitle">Past comments:</h3>
       <!-- Container used to display the returned list children from showContent() -->
       <div>
-        <ol id="content-container"></ol>
+        <ul id="content-container" class="list-group"></ul>
       </div>
     </div>
   </body>
