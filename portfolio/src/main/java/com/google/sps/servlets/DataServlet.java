@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Servlet that allows client to post a comment and see 
-    previous made comments by other clients */
+    previously made comments by other clients */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
@@ -48,9 +48,9 @@ public class DataServlet extends HttpServlet {
     comments.clear();
     int limit = toInt(request.getParameter("max"));
     for (Entity entity : results.asList(FetchOptions.Builder.withLimit(limit))) {
-      String comment = (String) entity.getProperty("com");
-      String firstN = (String) entity.getProperty("firstN");
-      String lastN = (String) entity.getProperty("lastN");
+      String comment = (String) entity.getProperty("comment");
+      String firstN = (String) entity.getProperty("firstName");
+      String lastN = (String) entity.getProperty("lastName");
       comments.add(firstN+" "+lastN+":\n"+comment);
     }
 
@@ -71,9 +71,9 @@ public class DataServlet extends HttpServlet {
 
     // Creates an Entity for each comment entry.
     Entity entryEntity = new Entity("entry");
-    entryEntity.setProperty("firstN",firstName);
-    entryEntity.setProperty("lastN",lastName);
-    entryEntity.setProperty("com",comment);
+    entryEntity.setProperty("firstName",firstName);
+    entryEntity.setProperty("lastName",lastName);
+    entryEntity.setProperty("comment",comment);
     entryEntity.setProperty("timestamp", timestamp);
     // Inserts Entity.
     datastore.put(entryEntity);
