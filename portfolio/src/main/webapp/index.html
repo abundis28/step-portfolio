@@ -28,17 +28,23 @@
         </div>
       </nav>
     </div>
-    <div id="content">
+    <div id="content" class="homepage">
       <div id="title">
         <h1>Welcome to the Portfolio of Andrés Abundis</h1>
       </div>
-      <h4 id="text">This is my portfolio! I will present some of my most important aspects.</h4>
-      <div id="selfie-container">
-        <img src="Images/security.jpg" id="selfie" alt="Photo of Andrés in a small mexican town."/>
+      <div id="title">
+        <h4 id="text">This is my portfolio! I will present some of my most important aspects.</h4>
+      </div>
+      <div id="selfie-container" class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <img src="Images/security.jpg" id="selfie" alt="Photo of Andrés in a small mexican town."/>
+          </div>
+        </div>
       </div>
       <div>
-        <p id="text">Click here to get a random language that I speak:</p>
-        <button onclick="addRandomLanguage()">Click!</button>
+        <p id="text">Click to get a random language that I speak:</p>
+        <button class="btn btn-light" onclick="addRandomLanguage()">Click!</button>
         <div id="language-container"></div>
       </div>
     </div>
