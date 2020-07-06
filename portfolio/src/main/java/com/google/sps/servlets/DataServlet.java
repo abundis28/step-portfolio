@@ -35,7 +35,6 @@ import java.util.List;
 public class DataServlet extends HttpServlet {
 
   private List<String> comments = new ArrayList<>();
-  // Declares instance of Datastore Service
   DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
   @Override
@@ -45,9 +44,9 @@ public class DataServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
     comments.clear();
     for (Entity entity : results.asIterable()) {
-      String comment = (String) entity.getProperty("com");
-      String firstN = (String) entity.getProperty("firstN");
-      String lastN = (String) entity.getProperty("lastN");
+      String comment = (String) entity.getProperty("comment");
+      String firstN = (String) entity.getProperty("firstName");
+      String lastN = (String) entity.getProperty("lastName");
       comments.add(firstN+" "+lastN+":\n"+comment);
     }
     
@@ -68,9 +67,9 @@ public class DataServlet extends HttpServlet {
 
     // Creates an Entity for each comment entry.
     Entity entryEntity = new Entity("entry");
-    entryEntity.setProperty("firstN",firstName);
-    entryEntity.setProperty("lastN",lastName);
-    entryEntity.setProperty("com",comment);
+    entryEntity.setProperty("firstName",firstName);
+    entryEntity.setProperty("lastName",lastName);
+    entryEntity.setProperty("comment",comment);
     entryEntity.setProperty("timestamp", timestamp);
     // Inserts Entity.
     datastore.put(entryEntity);
