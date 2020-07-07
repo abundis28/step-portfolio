@@ -86,3 +86,7 @@ label {
   color: white;
   margin: .5rem 0;
 }
+
+form {
+  display: none;
+}
