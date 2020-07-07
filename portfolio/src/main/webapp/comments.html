@@ -35,24 +35,53 @@
         <h3 class="subtitle">Name:</h3>
         <div class="row">
           <div class="col">
-            <input type="text" class="form-control" placeholder="First name" name="firstName">
+            <input type="text" class="form-control" placeholder="First name" name="firstName" required>
           </div>
           <div class="col">
-            <input type="text" class="form-control" placeholder="Last name" name="lastName">
+            <input type="text" class="form-control" placeholder="Last name" name="lastName" required>
           </div>
         </div>
         <div class="form-group">
           <label for="textarea"><h3 class="subtitle">Leave your comment:</h3></label>
-          <textarea class="form-control" name="textarea" rows="3"></textarea>
+          <textarea class="form-control" name="textarea" rows="3" 
+              placeholder="Leave a comment!" required></textarea>
         </div>
         <button type="submit" class="btn btn-light">Submit</button>
       </form>
       <!-- (FOR DEV PURPOSES) To see admin page, uncomment next line. -->
       <!-- <a href="/_ah/admin" id="text">View admin page.</a> -->
-      <h3 class="subtitle">Past comments:</h3>
-      <!-- Container used to display the returned list children from showContent() -->
-      <div>
-        <ul id="content-container" class="list-group"></ul>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3 class="subtitle">Past comments:</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <h5 class="note-btns">Select amount of comments to show:</h5>
+          </div>
+          <div class="col-4">
+            <!-- TODO(aabundis): Allow users to know which option is currently selected. -->
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-light" value="3"
+                    onclick="showComments(this.value)">3</button>
+                <button type="button" class="btn btn-outline-light" value="5"
+                    onclick="showComments(this.value)">5</button>
+                <button type="button" class="btn btn-outline-light" value="10"
+                    onclick="showComments(this.value)">10</button>
+                <button type="button" class="btn btn-outline-light" value="15"
+                    onclick="showComments(this.value)">15</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <!-- Container used to display the returned list children from showContent() -->
+            <ul id="content-container" class="list-group"></ul>
+          </div>
+        </div>
       </div>
     </div>
   </body>

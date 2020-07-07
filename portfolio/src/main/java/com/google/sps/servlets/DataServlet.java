@@ -17,6 +17,7 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.PreparedQuery;
@@ -29,8 +30,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Servlet that returns a JSON string with quotes.
-    TODO(aabundis): modify this file to handle comments data */
+/** Servlet that allows client to post a comment and see 
+    previously made comments by other clients */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
@@ -42,14 +43,17 @@ public class DataServlet extends HttpServlet {
     // Prepares results and sorts them in descending order.
     Query query = new Query("entry").addSort("timestamp", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
+    // TODO(aabundis): Find efficient way other than clearing arrayList and then filling up again.
     comments.clear();
-    for (Entity entity : results.asIterable()) {
+
+    int limit = numCommentsValueStringToInt(request.getParameter("max"));
+    for (Entity entity : results.asList(FetchOptions.Builder.withLimit(limit))) {
       String comment = (String) entity.getProperty("comment");
       String firstN = (String) entity.getProperty("firstName");
       String lastN = (String) entity.getProperty("lastName");
-      comments.add(firstN+" "+lastN+":\n"+comment);
+      comments.add(firstN + " " + lastN + ":\n" + comment);
     }
-    
+
     String json = convertToJsonUsingGson();
     // Send the JSON as the response.
     response.setContentType("application/json;");
@@ -67,9 +71,9 @@ public class DataServlet extends HttpServlet {
 
     // Creates an Entity for each comment entry.
     Entity entryEntity = new Entity("entry");
-    entryEntity.setProperty("firstName",firstName);
-    entryEntity.setProperty("lastName",lastName);
-    entryEntity.setProperty("comment",comment);
+    entryEntity.setProperty("firstName", firstName);
+    entryEntity.setProperty("lastName", lastName);
+    entryEntity.setProperty("comment", comment);
     entryEntity.setProperty("timestamp", timestamp);
     // Inserts Entity.
     datastore.put(entryEntity);
@@ -83,5 +87,18 @@ public class DataServlet extends HttpServlet {
   private String convertToJsonUsingGson() {
     Gson gson = new Gson();
     return gson.toJson(comments);
+  }
+
+  /**
+   * Converts the string declared as value for each of the selections in the button 
+   * group in the comments.html file.
+   */
+  private int numCommentsValueStringToInt(String str) {
+    try {
+      return Integer.parseInt(str);
+    } catch (NumberFormatException e) {
+      // Return 3 as a default because no selection has been made.
+      return 3;
+    }
   }
 }
