@@ -36,7 +36,6 @@ import java.util.List;
 public class DataServlet extends HttpServlet {
 
   private List<String> comments = new ArrayList<>();
-  // Declares instance of Datastore Service
   DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
   @Override
@@ -46,6 +45,7 @@ public class DataServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
     // TODO(aabundis): Find efficient way other than clearing arrayList and then filling up again.
     comments.clear();
+
     int limit = numCommentsValueStringToInt(request.getParameter("max"));
     for (Entity entity : results.asList(FetchOptions.Builder.withLimit(limit))) {
       String comment = (String) entity.getProperty("comment");
@@ -62,7 +62,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Retreives the entry values.
+    // Retrieves the entry values.
     String comment = request.getParameter("textarea");
     String firstName = request.getParameter("firstName");
     String lastName = request.getParameter("lastName");
