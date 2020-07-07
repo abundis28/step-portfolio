@@ -34,6 +34,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/user")
 public class UserServlet extends HttpServlet {
  
+/**
+ * Returns a string or a Login URL depending on the user Login status.
+ */
 @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     UserService userService = UserServiceFactory.getUserService();
