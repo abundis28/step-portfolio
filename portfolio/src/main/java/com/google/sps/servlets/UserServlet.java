@@ -46,11 +46,13 @@ public class UserServlet extends HttpServlet {
     } else {
       json = convertToJsonUsingGson("Please log in!");
     }
+
     // Send the JSON as the response.
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
   
+  // TODO(aabundis): Pull method to shared utils class to avoid repeatition.
   /**
    * Converts the status string into a JSON string using the Gson library.
    */
