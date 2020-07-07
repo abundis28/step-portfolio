@@ -71,9 +71,9 @@ public class DataServlet extends HttpServlet {
 
     // Creates an Entity for each comment entry.
     Entity entryEntity = new Entity("entry");
-    entryEntity.setProperty("firstName",firstName);
-    entryEntity.setProperty("lastName",lastName);
-    entryEntity.setProperty("comment",comment);
+    entryEntity.setProperty("firstName", firstName);
+    entryEntity.setProperty("lastName", lastName);
+    entryEntity.setProperty("comment", comment);
     entryEntity.setProperty("timestamp", timestamp);
     // Inserts Entity.
     datastore.put(entryEntity);
@@ -91,7 +91,7 @@ public class DataServlet extends HttpServlet {
 
   /**
    * Converts the string declared as value for each of the selections in the button 
-      group in the comments.html file.
+   * group in the comments.html file.
    */
   private int numCommentsValueStringToInt(String str) {
     try {
