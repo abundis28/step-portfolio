@@ -31,6 +31,16 @@
       <div id="title">
         <h1>Comments</h1>
       </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <button class="btn btn-outline-light" onclick="checkLogStatus()">Log Status</button>
+          </div>
+          <div class="col-4">
+            <p id="status-label"></p>
+          </div>
+        </div>
+      </div>
       <form action="/data" method="POST">
         <h3 class="subtitle">Name:</h3>
         <div class="row">

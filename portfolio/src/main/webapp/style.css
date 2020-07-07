@@ -81,3 +81,8 @@ label {
 .note-btns {
   color: white;
 }
+
+#status-label {
+  color: white;
+  margin: .5rem 0;
+}
