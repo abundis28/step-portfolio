@@ -37,14 +37,14 @@ public class UserServlet extends HttpServlet {
 /**
  * Returns a string or a Login URL depending on the user Login status.
  */
-@Override
+  @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     UserService userService = UserServiceFactory.getUserService();
     String json;
     if (userService.isUserLoggedIn()) {
-      json = convertToJsonUsingGson("You are in!");
+      json = convertToJsonUsingGson("logged");
     } else {
-      json = convertToJsonUsingGson("Please log in!");
+      json = convertToJsonUsingGson(userService.createLoginURL("/user"));
     }
 
     // Send the JSON as the response.
@@ -52,7 +52,7 @@ public class UserServlet extends HttpServlet {
     response.getWriter().println(json);
   }
   
-  // TODO(aabundis): Pull method to shared utils class to avoid repeatition.
+  // TODO(aabundis): Pull method to shared utils class to avoid repetition.
   /**
    * Converts the status string into a JSON string using the Gson library.
    */

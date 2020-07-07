@@ -27,6 +27,11 @@ function addRandomLanguage() {
   languageContainer.innerText = language;
 }
 
+function loadPage(maxNumComments) {
+  checkLoginStatus();
+  showComments(maxNumComments);
+}
+
 /**
  * Appends previously made comments that populated the servlet as children list elements to the page.
  */
@@ -55,8 +60,6 @@ function createListElement(text) {
  */
 function checkLoginStatus() {
   fetch("/user").then(response => response.json()).then((status) => {
-    const statusElement = document.getElementById('status-label');
-    statusElement.innerHTML = '';
-    statusElement.innerHTML = status;
+    console.log(status);
   });
 }
