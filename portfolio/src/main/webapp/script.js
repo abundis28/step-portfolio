@@ -52,7 +52,7 @@ function createListElement(text) {
 
 function checkLogStatus() {
   fetch("/user").then(response => response.json()).then((status) => {
-    const statusElement = document.getElementById('status-container');
+    const statusElement = document.getElementById('status-label');
     statusElement.innerHTML = '';
     statusElement.innerHTML = status;
   });
