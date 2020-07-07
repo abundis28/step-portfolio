@@ -50,6 +50,9 @@ function createListElement(text) {
   return liElement;
 }
 
+/**
+ * Fetches user status from servlet and generates html to display.
+ */
 function checkLogStatus() {
   fetch("/user").then(response => response.json()).then((status) => {
     const statusElement = document.getElementById('status-label');

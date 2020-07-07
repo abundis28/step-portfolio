@@ -38,14 +38,17 @@ public class UserServlet extends HttpServlet {
     String json;
     if (userService.isUserLoggedIn()) {
       json = convertToJsonUsingGson("You are in!");
-      // Send the JSON as the response.
     } else {
       json = convertToJsonUsingGson("Please log in!");
     }
+    // Send the JSON as the response.
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
- 
+  
+  /**
+   * Converts the status string into a JSON string using the Gson library.
+   */
   private String convertToJsonUsingGson(String status) {
     Gson gson = new Gson();
     return gson.toJson(status);
