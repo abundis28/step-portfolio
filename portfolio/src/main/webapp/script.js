@@ -49,3 +49,11 @@ function createListElement(text) {
   liElement.setAttribute("class","list-group-item")
   return liElement;
 }
+
+function checkLogStatus() {
+  fetch("/user").then(response => response.json()).then((status) => {
+    const statusElement = document.getElementById('status-container');
+    statusElement.innerHTML = '';
+    statusElement.innerHTML = status;
+  });
+}
