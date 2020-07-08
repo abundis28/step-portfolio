@@ -81,3 +81,17 @@ label {
 .note-btns {
   color: white;
 }
+
+#status-label {
+  color: white;
+  margin: .5rem 0;
+}
+
+#comment-form {
+  display: none;
+}
+
+#modal-btn,
+#logout-btn {
+  display: none;
+}

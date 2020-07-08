@@ -67,15 +67,12 @@ public class DataServlet extends HttpServlet {
     String firstName = request.getParameter("firstName");
     String lastName = request.getParameter("lastName");
     long timestamp = System.currentTimeMillis();
-    // TODO(aabundis): Verify that a comment was written, no empty submissions.
-
     // Creates an Entity for each comment entry.
     Entity entryEntity = new Entity("entry");
     entryEntity.setProperty("firstName", firstName);
     entryEntity.setProperty("lastName", lastName);
     entryEntity.setProperty("comment", comment);
     entryEntity.setProperty("timestamp", timestamp);
-    // Inserts Entity.
     datastore.put(entryEntity);
     // Redirect to comments page to visualize comment.
     response.sendRedirect("/comments.html");
