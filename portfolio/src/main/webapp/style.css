@@ -87,6 +87,11 @@ label {
   margin: .5rem 0;
 }
 
-form {
+#comment-form {
+  display: none;
+}
+
+#modal-btn,
+#logout-btn {
   display: none;
 }

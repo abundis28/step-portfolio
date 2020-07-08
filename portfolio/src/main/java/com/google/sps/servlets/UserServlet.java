@@ -42,9 +42,9 @@ public class UserServlet extends HttpServlet {
     UserService userService = UserServiceFactory.getUserService();
     String json;
     if (userService.isUserLoggedIn()) {
-      json = convertToJsonUsingGson("You are in!");
+      json = convertToJsonUsingGson("logged");
     } else {
-      json = convertToJsonUsingGson("Please log in!");
+      json = convertToJsonUsingGson(userService.createLoginURL("/comments.html"));
     }
 
     // Send the JSON as the response.
@@ -52,7 +52,7 @@ public class UserServlet extends HttpServlet {
     response.getWriter().println(json);
   }
   
-  // TODO(aabundis): Pull method to shared utils class to avoid repeatition.
+  // TODO(aabundis): Pull method to shared utils class to avoid repetition.
   /**
    * Converts the status string into a JSON string using the Gson library.
    */

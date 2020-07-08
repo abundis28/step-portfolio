@@ -27,6 +27,11 @@ function addRandomLanguage() {
   languageContainer.innerText = language;
 }
 
+function loadPage(maxNumComments) {
+  checkLoginStatus();
+  showComments(maxNumComments);
+}
+
 /**
  * Appends previously made comments that populated the servlet as children list elements to the page.
  */
@@ -55,8 +60,16 @@ function createListElement(text) {
  */
 function checkLoginStatus() {
   fetch("/user").then(response => response.json()).then((status) => {
-    const statusElement = document.getElementById('status-label');
-    statusElement.innerHTML = '';
-    statusElement.innerHTML = status;
+    if(status == "logged") {
+      const logoutBtn = document.getElementById("logout-btn");
+      const commentForm = document.getElementById("comment-form");
+      logoutBtn.style.display = "block";
+      commentForm.style.display = "block";
+    } else {
+      const modalBtn = document.getElementById("modal-btn");
+      const loginBtn = document.getElementById("login-btn");
+      modalBtn.style.display = "block";
+      loginBtn.setAttribute("href", status);
+    }
   });
 }
