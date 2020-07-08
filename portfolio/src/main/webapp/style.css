@@ -90,3 +90,8 @@ label {
 form {
   display: none;
 }
+
+#modal-btn,
+#logout-btn {
+  display: none;
+}
