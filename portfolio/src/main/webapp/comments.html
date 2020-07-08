@@ -64,6 +64,8 @@
       <form action="/data" method="POST" id="comment-form">
         <h3 class="subtitle">Name:</h3>
         <div class="row">
+          <!-- Attribute "required" is enforced in all fields to avoid logic complications in JS 
+              or servlet files. -->
           <div class="col">
             <input type="text" class="form-control" placeholder="First name" name="firstName" required>
           </div>
