@@ -27,6 +27,9 @@ function addRandomLanguage() {
   languageContainer.innerText = language;
 }
 
+/**
+ * Renders the page depending on the login status of the users.
+ */
 function loadPage(maxNumComments) {
   checkLoginStatus();
   showComments(maxNumComments);
@@ -56,11 +59,12 @@ function createListElement(text) {
 }
 
 /**
- * Fetches user status from servlet and generates html to display.
+ * Shows the log out button and the form if the user is logged in. 
+ * Shows the log in button and hides the form if the user is logged out.
  */
 function checkLoginStatus() {
   fetch("/user").then(response => response.json()).then((status) => {
-    if(status == "logged") {
+    if (status == "logged") {
       const logoutBtn = document.getElementById("logout-btn");
       const commentForm = document.getElementById("comment-form");
       logoutBtn.style.display = "block";
