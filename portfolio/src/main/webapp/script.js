@@ -60,6 +60,16 @@ function createListElement(text) {
  */
 function checkLoginStatus() {
   fetch("/user").then(response => response.json()).then((status) => {
-    console.log(status);
+    if(status == "logged") {
+      const logoutBtn = document.getElementById("logout-btn");
+      const commentForm = document.getElementById("comment-form");
+      logoutBtn.style.display = "block";
+      commentForm.style.display = "block";
+    } else {
+      const modalBtn = document.getElementById("modal-btn");
+      const loginBtn = document.getElementById("login-btn");
+      modalBtn.style.display = "block";
+      loginBtn.setAttribute("href", status);
+    }
   });
 }

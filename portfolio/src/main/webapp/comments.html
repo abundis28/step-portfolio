@@ -61,7 +61,7 @@
         </div>
       </div>
       <!-- Form is hidden by default and will appear once the user logs in. -->
-      <form action="/data" method="POST">
+      <form action="/data" method="POST" id="comment-form">
         <h3 class="subtitle">Name:</h3>
         <div class="row">
           <div class="col">
@@ -95,13 +95,13 @@
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
               <div class="btn-group mr-2" role="group" aria-label="First group">
                 <button type="button" class="btn btn-outline-light" value="3"
-                    onclick="loadsPage(this.value)">3</button>
+                    onclick="loadPage(this.value)">3</button>
                 <button type="button" class="btn btn-outline-light" value="5"
-                    onclick="loadsPage(this.value)">5</button>
+                    onclick="loadPage(this.value)">5</button>
                 <button type="button" class="btn btn-outline-light" value="10"
-                    onclick="loadsPage(this.value)">10</button>
+                    onclick="loadPage(this.value)">10</button>
                 <button type="button" class="btn btn-outline-light" value="15"
-                    onclick="loadsPage(this.value)">15</button>
+                    onclick="loadPage(this.value)">15</button>
               </div>
             </div>
           </div>

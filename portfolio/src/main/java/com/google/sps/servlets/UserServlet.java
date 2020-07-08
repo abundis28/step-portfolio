@@ -44,7 +44,7 @@ public class UserServlet extends HttpServlet {
     if (userService.isUserLoggedIn()) {
       json = convertToJsonUsingGson("logged");
     } else {
-      json = convertToJsonUsingGson(userService.createLoginURL("/user"));
+      json = convertToJsonUsingGson(userService.createLoginURL("/comments.html"));
     }
 
     // Send the JSON as the response.

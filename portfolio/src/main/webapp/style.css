@@ -87,7 +87,7 @@ label {
   margin: .5rem 0;
 }
 
-form {
+#comment-form {
   display: none;
 }
 
