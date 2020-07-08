@@ -36,8 +36,8 @@ import javax.servlet.http.HttpServletResponse;
 public class UserServlet extends HttpServlet {
  
   /**
-  * Returns a JSON string with the login status and the correspondin login/logout URL.
-  */
+   * Returns a JSON string with the login status and the correspondin login/logout URL.
+   */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     UserService userService = UserServiceFactory.getUserService();
