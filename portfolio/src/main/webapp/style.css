@@ -87,10 +87,7 @@ label {
   margin: .5rem 0;
 }
 
-#comment-form {
-  display: none;
-}
-
+#comment-form,
 #login-modal-btn,
 #logout-modal-btn,
 #login-btn,
