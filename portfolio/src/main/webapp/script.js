@@ -77,6 +77,8 @@ function checkLoginStatus() {
       // Shows the log in button (in navbar and modal) if the user is logged out.
       const loginBtn = document.getElementById("login-btn");
       const loginModalBtn = document.getElementById("login-modal-btn");
+      const loggedOutSubtitle = document.getElementById("logged-out-subtitle");
+      loggedOutSubtitle.style.display = "block";
       loginBtn.style.display = "block";
       loginModalBtn.setAttribute("href", user.url);
       loginModalBtn.style.display = "block";

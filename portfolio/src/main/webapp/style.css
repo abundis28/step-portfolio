@@ -28,7 +28,8 @@ body {
 }
 
 h1,
-h3 {
+h3,
+h6 {
   color: white;
 }
 
@@ -91,6 +92,7 @@ label {
 #login-modal-btn,
 #logout-modal-btn,
 #login-btn,
-#logout-btn {
+#logout-btn,
+#logged-out-subtitle {
   display: none;
 }
