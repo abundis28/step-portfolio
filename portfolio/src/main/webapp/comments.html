@@ -26,11 +26,11 @@
           </div>
         </div>
         <!-- Hidden button that triggers modal, will show if user is not logged in. -->
-        <button type="button" class="btn btn-light" id="modal-btn" data-toggle="modal" data-target="#login-modal">
+        <button type="button" class="btn btn-light" id="login-btn" data-toggle="modal" data-target="#login-modal">
           Log in!
         </button>
         <!-- Hidden button to logout, will show if user is logged in. -->
-        <button type="button" class="btn btn-light" id="logout-btn">
+        <button type="button" class="btn btn-light" id="logout-btn" data-toggle="modal" data-target="#login-modal">
           Log out!
         </button>
       </nav>
@@ -52,10 +52,14 @@
             </div>
             <div class="modal-body">
               <p>Log in to submit comments!</p>
+              <p>You won't be able to submit comments while logged out.</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <a id="login-btn"><button type="button" class="btn btn-primary">Log in!</button></a>
+              <!-- Both buttons are hidden as default and will appear depending on the 
+                  user login status -->
+              <a id="login-modal-btn"><button type="button" class="btn btn-primary">Log in!</button></a>
+              <a id="logout-modal-btn"><button type="button" class="btn btn-primary">Log out!</button></a>
             </div>
           </div>
         </div>
@@ -97,13 +101,13 @@
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
               <div class="btn-group mr-2" role="group" aria-label="First group">
                 <button type="button" class="btn btn-outline-light" value="3"
-                    onclick="loadPage(this.value)">3</button>
+                    onclick="showComments(this.value)">3</button>
                 <button type="button" class="btn btn-outline-light" value="5"
-                    onclick="loadPage(this.value)">5</button>
+                    onclick="showComments(this.value)">5</button>
                 <button type="button" class="btn btn-outline-light" value="10"
-                    onclick="loadPage(this.value)">10</button>
+                    onclick="showComments(this.value)">10</button>
                 <button type="button" class="btn btn-outline-light" value="15"
-                    onclick="loadPage(this.value)">15</button>
+                    onclick="showComments(this.value)">15</button>
               </div>
             </div>
           </div>
