@@ -40,9 +40,11 @@ function loadPage(maxNumComments) {
  */
 function showComments(maxNumComments) {
   fetch('/data?max=' + maxNumComments).then(response => response.json()).then((commentsJson) => {
+    console.log("Comments displayed" + maxNumComments);
     const commentsElement = document.getElementById('content-container');
     commentsElement.innerHTML = '';
     for (const comment of commentsJson) {
+      console.log(comment);
       commentsElement.appendChild(createListElement(comment));
     }
   });
@@ -59,21 +61,27 @@ function createListElement(text) {
 }
 
 /**
- * Shows the log out button and the form if the user is logged in. 
- * Shows the log in button and hides the form if the user is logged out.
+ * Handles showing of buttons depending on the fetched status of the user.
+ * Assigns the corresponding URL to the modal buttons (login or logout, depending).
  */
 function checkLoginStatus() {
-  fetch("/user").then(response => response.json()).then((status) => {
-    if (status == "logged") {
-      const logoutBtn = document.getElementById("logout-btn");
+  fetch("/user").then(response => response.json()).then((user) => {
+    if (user.loginStatus) {
+      // Shows the log out button (in navbar and modal) and the form if the user is logged in. 
       const commentForm = document.getElementById("comment-form");
-      logoutBtn.style.display = "block";
+      const logoutBtn = document.getElementById("logout-btn");
+      const logoutModalBtn = document.getElementById("logout-modal-btn"); 
       commentForm.style.display = "block";
+      logoutBtn.style.display = "block";
+      logoutModalBtn.setAttribute("href", user.url);
+      logoutModalBtn.style.display = "block";
     } else {
-      const modalBtn = document.getElementById("modal-btn");
+      // Shows the log in button (in navbar and modal) if the user is logged out.
       const loginBtn = document.getElementById("login-btn");
-      modalBtn.style.display = "block";
-      loginBtn.setAttribute("href", status);
+      const loginModalBtn = document.getElementById("login-modal-btn");
+      loginBtn.style.display = "block";
+      loginModalBtn.setAttribute("href", user.url);
+      loginModalBtn.style.display = "block";
     }
   });
 }
