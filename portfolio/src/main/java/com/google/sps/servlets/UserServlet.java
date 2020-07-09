@@ -13,7 +13,7 @@
 // limitations under the License.
  
 package com.google.sps.servlets;
- 
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -22,6 +22,7 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
+import com.google.sps.classes.UserAuthentication;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,19 +36,22 @@ import javax.servlet.http.HttpServletResponse;
 public class UserServlet extends HttpServlet {
  
 /**
- * Returns a string or a Login URL depending on the user Login status.
+ * Returns a JSON string with the login status and the correspondin login/logout URL.
  */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     UserService userService = UserServiceFactory.getUserService();
-    String json;
+    UserAuthentication user = new UserAuthentication();
     if (userService.isUserLoggedIn()) {
-      json = convertToJsonUsingGson("logged");
+      user.url = userService.createLogoutURL("/comments.html");
+      user.loginStatus = true;
     } else {
-      json = convertToJsonUsingGson(userService.createLoginURL("/comments.html"));
+      user.url = userService.createLoginURL("/comments.html");
+      user.loginStatus = false;
     }
 
     // Send the JSON as the response.
+    String json = convertToJsonUsingGson(user);
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
@@ -56,8 +60,8 @@ public class UserServlet extends HttpServlet {
   /**
    * Converts the status string into a JSON string using the Gson library.
    */
-  private String convertToJsonUsingGson(String status) {
+  private String convertToJsonUsingGson(UserAuthentication user) {
     Gson gson = new Gson();
-    return gson.toJson(status);
+    return gson.toJson(user);
   }
 }
