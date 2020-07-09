@@ -91,7 +91,9 @@ label {
   display: none;
 }
 
-#modal-btn,
+#login-modal-btn,
+#logout-modal-btn,
+#login-btn,
 #logout-btn {
   display: none;
 }
