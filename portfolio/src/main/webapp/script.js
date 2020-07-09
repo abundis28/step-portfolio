@@ -40,11 +40,9 @@ function loadPage(maxNumComments) {
  */
 function showComments(maxNumComments) {
   fetch('/data?max=' + maxNumComments).then(response => response.json()).then((commentsJson) => {
-    console.log("Comments displayed" + maxNumComments);
     const commentsElement = document.getElementById('content-container');
     commentsElement.innerHTML = '';
     for (const comment of commentsJson) {
-      console.log(comment);
       commentsElement.appendChild(createListElement(comment));
     }
   });
