@@ -68,20 +68,24 @@ function checkLoginStatus() {
       // Shows the log out button (in navbar and modal) and the form if the user is logged in. 
       const commentForm = document.getElementById("comment-form");
       const logoutBtn = document.getElementById("logout-btn");
-      const logoutModalBtn = document.getElementById("logout-modal-btn"); 
+      const logoutModalBtn = document.getElementById("logout-modal-btn");
+      const loggedInText = document.getElementById("logged-in-text");
       commentForm.style.display = "block";
       logoutBtn.style.display = "block";
-      logoutModalBtn.setAttribute("href", user.url);
+      logoutModalBtn.setAttribute("href", user.redirectUrl);
       logoutModalBtn.style.display = "block";
+      loggedInText.style.display = "block";
     } else {
       // Shows the log in button (in navbar and modal) if the user is logged out.
       const loginBtn = document.getElementById("login-btn");
       const loginModalBtn = document.getElementById("login-modal-btn");
-      const loggedOutSubtitle = document.getElementById("logged-out-subtitle");
-      loggedOutSubtitle.style.display = "block";
+      const loggedOutText = document.getElementById("logged-out-text");
+      const loggedOutText2 = document.getElementById("logged-out-text-2");
       loginBtn.style.display = "block";
-      loginModalBtn.setAttribute("href", user.url);
+      loginModalBtn.setAttribute("href", user.redirectUrl);
       loginModalBtn.style.display = "block";
+      loggedOutText.style.display = "block";
+      loggedOutText2.style.display = "block";
     }
   });
 }

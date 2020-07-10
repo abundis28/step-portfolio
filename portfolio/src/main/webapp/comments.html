@@ -38,7 +38,7 @@
     <div id="content">
       <div id="title">
         <h1>Comments</h1>
-        <h6 id="logged-out-subtitle">Login to submit comments!</h6>
+        <h6 id="logged-out-text-2">Login to submit comments!</h6>
       </div>
       <!-- Hidden modal that will appear if login button is clicked. -->
       <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" 
@@ -46,14 +46,15 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+              <h5 class="modal-title" id="logged-out-text">Login</h5>
+              <h5 class="modal-title" id="logged-in-text">Logout</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
               <p>Log in to submit comments!</p>
-              <p>You won't be able to submit comments while logged out.</p>
+              <p>You won't be able to comment if logged out.</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
