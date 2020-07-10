@@ -15,28 +15,16 @@
 package com.google.sps.classes;
 
 import com.google.gson.Gson;
-import com.google.sps.classes.UserAuthentication;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Utility methods used across classes.
  */
 public final class UtilityClass {
   /**
-   * Converts ArrayList of comments to JSON using GSON class.
+   * Converts objects to JSON using GSON class.
    */
-  public static String convertToJsonUsingGson(List<String> comments) {
+  public static String convertToJsonUsingGson(Object object) {
     Gson gson = new Gson();
-    return gson.toJson(comments);
-  }
-
-  /**
-   * Overloaded convertToJsonUsingGson() function that converts user object 
-   * to JSON using GSON class.
-   */
-  public static String convertToJsonUsingGson(UserAuthentication user) {
-    Gson gson = new Gson();
-    return gson.toJson(user);
+    return gson.toJson(object);
   }
 }
