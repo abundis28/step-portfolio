@@ -21,7 +21,8 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.google.gson.Gson;
+import com.google.sps.classes.UtilityClass;
+import com.google.sps.classes.UserAuthentication;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,29 +36,22 @@ import javax.servlet.http.HttpServletResponse;
 public class UserServlet extends HttpServlet {
  
   /**
-   * Returns a string or a Login URL depending on the user Login status.
+   * Returns a JSON string with the login status and the correspondin login/logout URL.
    */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     UserService userService = UserServiceFactory.getUserService();
-    String json;
-    if (userService.isUserLoggedIn()) {
-      json = convertToJsonUsingGson("logged");
-    } else {
-      json = convertToJsonUsingGson(userService.createLoginURL("/comments.html"));
-    }
-
-    // Send the JSON as the response.
+    UserAuthentication user = new UserAuthentication();
+    // Destination URL is the same whether the user is signed in or not.
+    String redirectUrl = "/comments.html";
+    boolean status = userService.isUserLoggedIn();
+    user.redirectUrl = status ? userService.createLogoutURL(redirectUrl) : 
+        userService.createLoginURL(redirectUrl);
+    user.loginStatus = status ? true : false;
+ 
+    // Use convertToJsonUsingGson() function in UtilityClass to convert and send JSON as response.
+    String json = UtilityClass.convertToJsonUsingGson(user);
     response.setContentType("application/json;");
     response.getWriter().println(json);
-  }
-  
-  // TODO(aabundis): Pull method to shared utils class to avoid repetition.
-  /**
-   * Converts the status string into a JSON string using the Gson library.
-   */
-  private String convertToJsonUsingGson(String status) {
-    Gson gson = new Gson();
-    return gson.toJson(status);
   }
 }

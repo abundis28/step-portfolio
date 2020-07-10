@@ -21,7 +21,7 @@ import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.PreparedQuery;
-import com.google.gson.Gson;
+import com.google.sps.classes.UtilityClass;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,11 +35,12 @@ import java.util.List;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private List<String> comments = new ArrayList<>();
   DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    List<String> comments = new ArrayList<>();
+
     // Prepares results and sorts them in descending order.
     Query query = new Query("entry").addSort("timestamp", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
@@ -53,8 +54,8 @@ public class DataServlet extends HttpServlet {
       String lastN = (String) entity.getProperty("lastName");
       comments.add(firstN + " " + lastN + ":\n" + comment);
     }
-
-    String json = convertToJsonUsingGson();
+    // Use convertToJsonUsingGson() function in UtilityClass.
+    String json = UtilityClass.convertToJsonUsingGson(comments);
     // Send the JSON as the response.
     response.setContentType("application/json;");
     response.getWriter().println(json);
@@ -76,14 +77,6 @@ public class DataServlet extends HttpServlet {
     datastore.put(entryEntity);
     // Redirect to comments page to visualize comment.
     response.sendRedirect("/comments.html");
-  }
-
-  /**
-   * Converts an ArrayList of messages into a JSON string using the Gson library.
-   */
-  private String convertToJsonUsingGson() {
-    Gson gson = new Gson();
-    return gson.toJson(comments);
   }
 
   /**

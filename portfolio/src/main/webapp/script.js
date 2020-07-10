@@ -27,6 +27,9 @@ function addRandomLanguage() {
   languageContainer.innerText = language;
 }
 
+/**
+ * Renders the page depending on the login status of the users.
+ */
 function loadPage(maxNumComments) {
   checkLoginStatus();
   showComments(maxNumComments);
@@ -56,20 +59,33 @@ function createListElement(text) {
 }
 
 /**
- * Fetches user status from servlet and generates html to display.
+ * Handles showing of buttons depending on the fetched status of the user.
+ * Assigns the corresponding URL to the modal buttons (login or logout, depending).
  */
 function checkLoginStatus() {
-  fetch("/user").then(response => response.json()).then((status) => {
-    if(status == "logged") {
-      const logoutBtn = document.getElementById("logout-btn");
+  fetch("/user").then(response => response.json()).then((user) => {
+    if (user.loginStatus) {
+      // Shows the log out button (in navbar and modal) and the form if the user is logged in. 
       const commentForm = document.getElementById("comment-form");
-      logoutBtn.style.display = "block";
+      const logoutBtn = document.getElementById("logout-btn");
+      const logoutModalBtn = document.getElementById("logout-modal-btn");
+      const loggedInText = document.getElementById("logged-in-text");
       commentForm.style.display = "block";
+      logoutBtn.style.display = "block";
+      logoutModalBtn.setAttribute("href", user.redirectUrl);
+      logoutModalBtn.style.display = "block";
+      loggedInText.style.display = "block";
     } else {
-      const modalBtn = document.getElementById("modal-btn");
+      // Shows the log in button (in navbar and modal) if the user is logged out.
       const loginBtn = document.getElementById("login-btn");
-      modalBtn.style.display = "block";
-      loginBtn.setAttribute("href", status);
+      const loginModalBtn = document.getElementById("login-modal-btn");
+      const loggedOutText = document.getElementById("logged-out-text");
+      const loggedOutText2 = document.getElementById("logged-out-text-2");
+      loginBtn.style.display = "block";
+      loginModalBtn.setAttribute("href", user.redirectUrl);
+      loginModalBtn.style.display = "block";
+      loggedOutText.style.display = "block";
+      loggedOutText2.style.display = "block";
     }
   });
 }

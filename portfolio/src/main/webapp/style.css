@@ -28,7 +28,8 @@ body {
 }
 
 h1,
-h3 {
+h3,
+h6 {
   color: white;
 }
 
@@ -87,11 +88,13 @@ label {
   margin: .5rem 0;
 }
 
-#comment-form {
-  display: none;
-}
-
-#modal-btn,
-#logout-btn {
+#comment-form,
+#login-modal-btn,
+#logout-modal-btn,
+#login-btn,
+#logout-btn,
+#logged-out-text,
+#logged-out-text-2,
+#logged-in-text {
   display: none;
 }
