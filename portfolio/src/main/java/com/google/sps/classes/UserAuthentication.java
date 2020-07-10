@@ -18,6 +18,6 @@ package com.google.sps.classes;
  * User object created to group login/logout url and status.
  */
 public class UserAuthentication {
-  public String url = "";
+  public String redirectUrl = "";
   public boolean loginStatus = false;
 }

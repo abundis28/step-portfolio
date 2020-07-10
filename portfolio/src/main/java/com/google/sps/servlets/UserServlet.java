@@ -43,10 +43,10 @@ public class UserServlet extends HttpServlet {
     UserService userService = UserServiceFactory.getUserService();
     UserAuthentication user = new UserAuthentication();
     if (userService.isUserLoggedIn()) {
-      user.url = userService.createLogoutURL("/comments.html");
+      user.redirectUrl = userService.createLogoutURL("/comments.html");
       user.loginStatus = true;
     } else {
-      user.url = userService.createLoginURL("/comments.html");
+      user.redirectUrl = userService.createLoginURL("/comments.html");
       user.loginStatus = false;
     }
 
