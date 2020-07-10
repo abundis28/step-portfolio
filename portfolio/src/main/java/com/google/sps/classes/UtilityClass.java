@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * User object created to group login/logout url and status.
+ * Utility methods used across classes.
  */
 public final class UtilityClass {
   /**

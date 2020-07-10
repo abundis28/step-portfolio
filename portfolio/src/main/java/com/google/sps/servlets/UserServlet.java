@@ -50,7 +50,7 @@ public class UserServlet extends HttpServlet {
       user.loginStatus = false;
     }
 
-    // // Use convertToJsonUsingGson() function in UtilityClass to convert and send JSON as response.
+    // Use convertToJsonUsingGson() function in UtilityClass to convert and send JSON as response.
     String json = UtilityClass.convertToJsonUsingGson(user);
     response.setContentType("application/json;");
     response.getWriter().println(json);
