@@ -21,7 +21,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.google.gson.Gson;
+import com.google.sps.classes.UtilityClass;
 import com.google.sps.classes.UserAuthentication;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -51,17 +51,8 @@ public class UserServlet extends HttpServlet {
     }
 
     // Send the JSON as the response.
-    String json = convertToJsonUsingGson(user);
+    String json = UtilityClass.convertToJsonUsingGson(user);
     response.setContentType("application/json;");
     response.getWriter().println(json);
-  }
-  
-  // TODO(aabundis): Pull method to shared utils class to avoid repetition.
-  /**
-   * Converts the status string into a JSON string using the Gson library.
-   */
-  private String convertToJsonUsingGson(UserAuthentication user) {
-    Gson gson = new Gson();
-    return gson.toJson(user);
   }
 }
