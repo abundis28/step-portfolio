@@ -13,7 +13,7 @@
 // limitations under the License.
  
 package com.google.sps.servlets;
-
+ 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -42,14 +42,13 @@ public class UserServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     UserService userService = UserServiceFactory.getUserService();
     UserAuthentication user = new UserAuthentication();
-    if (userService.isUserLoggedIn()) {
-      user.redirectUrl = userService.createLogoutURL("/comments.html");
-      user.loginStatus = true;
-    } else {
-      user.redirectUrl = userService.createLoginURL("/comments.html");
-      user.loginStatus = false;
-    }
-
+    // Destination URL is the same whether the user is signed in or not.
+    String redirectUrl = "/comments.html";
+    boolean status = userService.isUserLoggedIn();
+    user.redirectUrl = status ? userService.createLogoutURL(redirectUrl) : 
+        userService.createLoginURL(redirectUrl);
+    user.loginStatus = status ? true : false;
+ 
     // Use convertToJsonUsingGson() function in UtilityClass to convert and send JSON as response.
     String json = UtilityClass.convertToJsonUsingGson(user);
     response.setContentType("application/json;");
