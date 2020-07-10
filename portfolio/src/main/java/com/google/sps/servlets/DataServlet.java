@@ -54,7 +54,7 @@ public class DataServlet extends HttpServlet {
       String lastN = (String) entity.getProperty("lastName");
       comments.add(firstN + " " + lastN + ":\n" + comment);
     }
-
+    // Use convertToJsonUsingGson() function in UtilityClass.
     String json = UtilityClass.convertToJsonUsingGson(comments);
     // Send the JSON as the response.
     response.setContentType("application/json;");
