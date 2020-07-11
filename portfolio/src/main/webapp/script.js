@@ -65,25 +65,25 @@ function createListElement(text) {
 function checkLoginStatus() {
   fetch("/user").then(response => response.json()).then((user) => {
     if (user.loginStatus) {
-      // Shows the log out button (in navbar and modal) and the form if the user is logged in. 
+      // Shows the form, the log out button (in navbar and modal) and a text label if user is logged in.
       const commentForm = document.getElementById("comment-form");
+      commentForm.style.display = "block"; 
       const logoutBtn = document.getElementById("logout-btn");
       const logoutModalBtn = document.getElementById("logout-modal-btn");
-      const loggedInText = document.getElementById("logged-in-text");
-      commentForm.style.display = "block";
       logoutBtn.style.display = "block";
       logoutModalBtn.setAttribute("href", user.redirectUrl);
       logoutModalBtn.style.display = "block";
+      const loggedInText = document.getElementById("logged-in-text");
       loggedInText.style.display = "block";
     } else {
-      // Shows the log in button (in navbar and modal) if the user is logged out.
+      // Shows the log in button (in navbar and modal) and a text label if the user is logged out.
       const loginBtn = document.getElementById("login-btn");
       const loginModalBtn = document.getElementById("login-modal-btn");
-      const loggedOutText = document.getElementById("logged-out-text");
-      const loggedOutText2 = document.getElementById("logged-out-text-2");
       loginBtn.style.display = "block";
       loginModalBtn.setAttribute("href", user.redirectUrl);
       loginModalBtn.style.display = "block";
+      const loggedOutText = document.getElementById("logged-out-text");
+      const loggedOutText2 = document.getElementById("logged-out-text-2");
       loggedOutText.style.display = "block";
       loggedOutText2.style.display = "block";
     }
