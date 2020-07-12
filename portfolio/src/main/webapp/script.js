@@ -90,6 +90,9 @@ function checkLoginStatus() {
   });
 }
 
+/**
+ * Renders the map in the assigned div tag.
+ */
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 25.672511, lng: -100.309114 },
