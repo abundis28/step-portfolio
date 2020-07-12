@@ -98,3 +98,9 @@ label {
 #logged-in-text {
   display: none;
 }
+
+#map {
+  border: thin solid black;
+  height: 20rem;
+  margin-top: 1.5rem;
+}

@@ -89,3 +89,10 @@ function checkLoginStatus() {
     }
   });
 }
+
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 25.672511, lng: -100.309114 },
+    zoom: 7
+  });
+}
