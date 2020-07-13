@@ -91,11 +91,12 @@ function checkLoginStatus() {
 }
 
 /**
- * Renders the map in the assigned div tag.
+ * Uses Maps Javascript API to render a map of my hometown, the user can select a 
+ * satellite, terrain or the default view. 
  */
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 25.672511, lng: -100.309114 },
-    zoom: 7
+    zoom: 10
   });
 }
