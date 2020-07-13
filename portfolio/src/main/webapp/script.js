@@ -65,27 +65,29 @@ function createListElement(text) {
 function checkLoginStatus() {
   fetch("/user").then(response => response.json()).then((user) => {
     if (user.loginStatus) {
-      // Shows the log out button (in navbar and modal) and the form if the user is logged in. 
+      // Shows the form, the log out button (in navbar and modal) and a text label if user is logged in.
       const commentForm = document.getElementById("comment-form");
+      commentForm.style.display = "block"; 
       const logoutBtn = document.getElementById("logout-btn");
       const logoutModalBtn = document.getElementById("logout-modal-btn");
-      const loggedInText = document.getElementById("logged-in-text");
-      commentForm.style.display = "block";
       logoutBtn.style.display = "block";
       logoutModalBtn.setAttribute("href", user.redirectUrl);
       logoutModalBtn.style.display = "block";
-      loggedInText.style.display = "block";
+      const loggingInText = document.getElementById("logging-in-text");
+      loggingInText.style.display = "block";
     } else {
-      // Shows the log in button (in navbar and modal) if the user is logged out.
+      // Shows the log in button (in navbar and modal) and a text label if the user is logged out.
       const loginBtn = document.getElementById("login-btn");
       const loginModalBtn = document.getElementById("login-modal-btn");
-      const loggedOutText = document.getElementById("logged-out-text");
-      const loggedOutText2 = document.getElementById("logged-out-text-2");
       loginBtn.style.display = "block";
       loginModalBtn.setAttribute("href", user.redirectUrl);
       loginModalBtn.style.display = "block";
-      loggedOutText.style.display = "block";
-      loggedOutText2.style.display = "block";
+      // Hidden title of modal that appears if user tries to logout.
+      const loggingOutText = document.getElementById("logging-out-text");
+      // Subtitle that appears if user is logged out and that asks the user to login to submit comments.
+      const loggedOutSubtitle = document.getElementById("logged-out-subtitle");
+      loggingOutText.style.display = "block";
+      loggedOutSubtitle.style.display = "block";
     }
   });
 }
