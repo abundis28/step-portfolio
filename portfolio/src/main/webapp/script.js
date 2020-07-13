@@ -73,8 +73,8 @@ function checkLoginStatus() {
       logoutBtn.style.display = "block";
       logoutModalBtn.setAttribute("href", user.redirectUrl);
       logoutModalBtn.style.display = "block";
-      const loggedInText = document.getElementById("logged-in-text");
-      loggedInText.style.display = "block";
+      const loggingInText = document.getElementById("logging-in-text");
+      loggingInText.style.display = "block";
     } else {
       // Shows the log in button (in navbar and modal) and a text label if the user is logged out.
       const loginBtn = document.getElementById("login-btn");
@@ -82,10 +82,12 @@ function checkLoginStatus() {
       loginBtn.style.display = "block";
       loginModalBtn.setAttribute("href", user.redirectUrl);
       loginModalBtn.style.display = "block";
-      const loggedOutText = document.getElementById("logged-out-text");
-      const loggedOutText2 = document.getElementById("logged-out-text-2");
-      loggedOutText.style.display = "block";
-      loggedOutText2.style.display = "block";
+      // Hidden title of modal that appears if user tries to logout.
+      const loggingOutText = document.getElementById("logging-out-text");
+      // Subtitle that appears if user is logged out and that asks the user to login to submit comments.
+      const loggedOutSubtitle = document.getElementById("logged-out-subtitle");
+      loggingOutText.style.display = "block";
+      loggedOutSubtitle.style.display = "block";
     }
   });
 }
