@@ -27,6 +27,13 @@ public final class FindMeetingQuery {
     if(request.getAttendees().isEmpty()) {
       possibleTimeSlots.add(TimeRange.WHOLE_DAY);
     }
+    // At this tage it may seem unnecessary to have the double return but it'll make more sense
+    // once the logic of the other test cases is implemented. 
+    // Could've implemented this solution with an if block, checking if the duration is less or equal
+    // than the whole day but nesting the whole algorithm inside an if at this early didn't convinced me.
+    if(request.getDuration() > TimeRange.WHOLE_DAY.duration()) {
+      return possibleTimeSlots;
+    }
     return possibleTimeSlots;
   }
 }
