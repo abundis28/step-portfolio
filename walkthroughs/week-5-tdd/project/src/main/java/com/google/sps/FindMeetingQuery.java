@@ -35,7 +35,10 @@ public final class FindMeetingQuery {
   }
 
   /*
-   * Adds a TimeRange depending on the scenario.
+   * Adds a TimeRange depending on the scenario. Some additions use a recursive call to this same
+   * function because if a new TimeRange is formed from a merge or an existing TimeRange is replaced
+   * because of a containment issue, it needs to be checked against all the previously added
+   * TimeRanges for new overlap or containment issues.
    */
   private ArrayList<TimeRange> addTimeRange(ArrayList<TimeRange> occupiedTimeSlots,
       TimeRange addedTimeSlot) {
