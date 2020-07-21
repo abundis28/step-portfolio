@@ -59,7 +59,7 @@ public final class FindMeetingQuery {
         return occupiedTimeSlots;
       }
     }
-    // No scenario applied to TimeRange added normally.
+    // No special-casing applied to TimeRange added normally.
     occupiedTimeSlots.add(addedTimeSlot);
     return occupiedTimeSlots;
   }
