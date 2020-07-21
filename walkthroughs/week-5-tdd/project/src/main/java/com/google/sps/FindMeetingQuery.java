@@ -77,23 +77,23 @@ public final class FindMeetingQuery {
    */
   private ArrayList<TimeRange> getOccupiedTimeSlots(Collection<Event> events,
       HashSet<String> requestAttendees) {
-    ArrayList<TimeRange> timeRangeEventsRequestAttendees = new ArrayList<TimeRange>();
+    ArrayList<TimeRange> occupiedTimeRangesForRequestAttendees = new ArrayList<TimeRange>();
     for (Event meeting : events) {
       for (String attendee : meeting.getAttendees()) {
         // If the meeting contains a requested attendee it is added.
         if (requestAttendees.contains(attendee)) {
-          timeRangeEventsRequestAttendees = addTimeRange(timeRangeEventsRequestAttendees,
+          occupiedTimeRangesForRequestAttendees = addTimeRange(occupiedTimeRangesForRequestAttendees,
               meeting.getWhen());
           break;
         }
       }
     }
-    Collections.sort(timeRangeEventsRequestAttendees, TimeRange.ORDER_BY_START);
-    return timeRangeEventsRequestAttendees;
+    Collections.sort(occupiedTimeRangesForRequestAttendees, TimeRange.ORDER_BY_START);
+    return occupiedTimeRangesForRequestAttendees;
   }
 
   /*
-   * Calculates whether requested meetings's duration fits in between occupied TimeRanges.
+   * Calculates whether requested meeting's duration fits in between occupied TimeRanges.
    */
   private Collection<TimeRange> getFreeTimeSlots(ArrayList<TimeRange> occupiedTimeSlots, 
       long duration) {
@@ -108,15 +108,14 @@ public final class FindMeetingQuery {
       possibleTimeSlots.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY, occupiedTimeSlots.get(0).start(), false));
     }
     int previousEnd = occupiedTimeSlots.get(0).end();
-    int currentStart;
     // Check for spaces between occupied TimeRanges.
-    for (int itr = 1; itr < occupiedTimeSlots.size(); itr++) {
-      currentStart = occupiedTimeSlots.get(itr).start();
+    for (int iterator = 1; iterator < occupiedTimeSlots.size(); iterator++) {
+      int currentStart = occupiedTimeSlots.get(iterator).start();
       int diff = currentStart - previousEnd;
       if (currentStart - previousEnd >= duration) {
         possibleTimeSlots.add(TimeRange.fromStartEnd(previousEnd, currentStart, false));
       }
-      previousEnd = occupiedTimeSlots.get(itr).end();
+      previousEnd = occupiedTimeSlots.get(iterator).end();
     }
     // From last meeting to right before meeting.
     if (TimeRange.END_OF_DAY - previousEnd >= duration) {
