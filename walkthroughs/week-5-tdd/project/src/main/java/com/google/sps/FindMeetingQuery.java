@@ -17,10 +17,10 @@ package com.google.sps;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.Collections;
 
 public final class FindMeetingQuery {
   /*
@@ -138,7 +138,7 @@ public final class FindMeetingQuery {
       return possibleTimeSlots;
     }
     // Duration lasts more than the whole day = not possible to have the meeting.
-    if(request.getDuration() > TimeRange.WHOLE_DAY.duration()) {
+    if(request.getDuration() > 1440) {
       return possibleTimeSlots;
     }
     // Define available space by first defining the already occupied TimeRanges.
