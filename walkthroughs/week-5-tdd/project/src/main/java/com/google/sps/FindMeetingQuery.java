@@ -69,7 +69,7 @@ public final class FindMeetingQuery {
    */
   private TimeRange mergeTimeRanges(TimeRange a, TimeRange b) {
     return TimeRange.fromStartEnd(a.start() < b.start() ? a.start() : b.start(),
-        a.end() > b.end() ? a.end() : b.end(), false);
+        a.end() > b.end() ? a.end() : b.end(), /*inclusive=*/false);
   }
 
   /*
@@ -81,7 +81,7 @@ public final class FindMeetingQuery {
     for (Event meeting : events) {
       for (String attendee : meeting.getAttendees()) {
         // If the meeting contains a requested attendee it is added.
-        if (requestAttendees.contains(attendee) != false) {
+        if (requestAttendees.contains(attendee)) {
           timeRangeEventsRequestAttendees = addTimeRange(timeRangeEventsRequestAttendees,
               meeting.getWhen());
           break;
