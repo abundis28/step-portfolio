@@ -117,7 +117,7 @@ public final class FindMeetingQuery {
       }
       previousEnd = occupiedTimeSlots.get(iterator).end();
     }
-    // From last meeting to right before meeting.
+    // From last meeting to right before midnight.
     if (TimeRange.END_OF_DAY - previousEnd >= duration) {
       possibleTimeSlots.add(TimeRange.fromStartEnd(previousEnd, TimeRange.END_OF_DAY, true));
     }
