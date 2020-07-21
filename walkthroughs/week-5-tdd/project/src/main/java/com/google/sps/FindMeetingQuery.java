@@ -26,7 +26,7 @@ public final class FindMeetingQuery {
   /*
    * Assigns attendees from request to local HashMap to search for them in constant time.
    */
-  private HashSet<String> toSet(MeetingRequest request) {
+  private HashSet<String> requestAttendeesToSet(MeetingRequest request) {
     HashSet<String> requestAttendees = new HashSet<String>();
     for (String attendee : request.getAttendees()) {
       requestAttendees.add(attendee);
@@ -130,7 +130,7 @@ public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     Collection<TimeRange> possibleTimeSlots = new ArrayList<>();
     long meetingDuration = request.getDuration();
-    HashSet<String> requestAttendees = toSet(request);
+    HashSet<String> requestAttendees = requestAttendeesToSet(request);
     // No attendees = no time restrictions = all day available.
     if (requestAttendees.isEmpty()) {
       possibleTimeSlots.add(TimeRange.WHOLE_DAY);
