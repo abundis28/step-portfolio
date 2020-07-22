@@ -105,17 +105,19 @@ public final class FindMeetingQuery {
     }
     // From midnight to the first meeting.
     if (occupiedTimeSlots.get(0).start() - TimeRange.START_OF_DAY >= duration) {
-      possibleTimeSlots.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY, occupiedTimeSlots.get(0).start(), false));
+      possibleTimeSlots.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY, 
+          occupiedTimeSlots.get(0).start(), false));
     }
     int previousEnd = occupiedTimeSlots.get(0).end();
-    // Check for spaces between occupied TimeRanges.
-    for (int iterator = 1; iterator < occupiedTimeSlots.size(); iterator++) {
-      int currentStart = occupiedTimeSlots.get(iterator).start();
+    // Check for spaces between occupied TimeRanges. The for loop starts in the 1 slot
+    // because the 0 slot was already processed out of the for loop.
+    for (int index = 1; index < occupiedTimeSlots.size(); index++) {
+      int currentStart = occupiedTimeSlots.get(index).start();
       int diff = currentStart - previousEnd;
       if (currentStart - previousEnd >= duration) {
         possibleTimeSlots.add(TimeRange.fromStartEnd(previousEnd, currentStart, false));
       }
-      previousEnd = occupiedTimeSlots.get(iterator).end();
+      previousEnd = occupiedTimeSlots.get(index).end();
     }
     // From last meeting to right before midnight.
     if (TimeRange.END_OF_DAY - previousEnd >= duration) {
@@ -141,7 +143,8 @@ public final class FindMeetingQuery {
       return possibleTimeSlots;
     }
     // Define available space by first defining the already occupied TimeRanges.
-    possibleTimeSlots = getFreeTimeSlots(getOccupiedTimeSlots(events, requestAttendees), request.getDuration());
+    possibleTimeSlots = getFreeTimeSlots(getOccupiedTimeSlots(events, requestAttendees), 
+        request.getDuration());
     return possibleTimeSlots;
   }
 }
