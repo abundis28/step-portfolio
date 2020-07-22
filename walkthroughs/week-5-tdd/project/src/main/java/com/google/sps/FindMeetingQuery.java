@@ -109,12 +109,13 @@ public final class FindMeetingQuery {
           occupiedTimeSlots.get(0).start(), false));
     }
     int previousEnd = occupiedTimeSlots.get(0).end();
+    // The for loop starts in the 1 slot because the 0 slot was already processed out of the loop.
     for (int index = 1; index < occupiedTimeSlots.size(); index++) {
-      // Check for spaces between occupied TimeRanges. The for loop starts in the 1 slot because 
-      // the 0 slot was already processed out of the for loop.
+      // Check for spaces between occupied TimeRanges.
       int currentStart = occupiedTimeSlots.get(index).start();
-      int diff = currentStart - previousEnd;
       if (currentStart - previousEnd >= duration) {
+        // If the duration fits between the end of the previous occupied TimeRange and the start of
+        // the start of the current occupied TimeRange, then a free TimeRange is created and added.
         possibleTimeSlots.add(TimeRange.fromStartEnd(previousEnd, currentStart, false));
       }
       previousEnd = occupiedTimeSlots.get(index).end();
