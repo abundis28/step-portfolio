@@ -43,18 +43,18 @@ public final class FindMeetingQuery {
   private ArrayList<TimeRange> addTimeRange(ArrayList<TimeRange> occupiedTimeSlots,
       TimeRange addedTimeSlot) {
     for (TimeRange timeSlot : occupiedTimeSlots) {
-      // New TimeRange is already contained, so it is not added.
       if (timeSlot.contains(addedTimeSlot)) {
+        // New TimeRange is already contained, so it is not added.
         return occupiedTimeSlots;
       }
-      // New TimeRange contains an already existing meeting, so the new replaces the existing.
       if (addedTimeSlot.contains(timeSlot)) {
+        // New TimeRange contains an already existing meeting, so the new replaces the existing.
         occupiedTimeSlots.remove(timeSlot);
         addTimeRange(occupiedTimeSlots, addedTimeSlot);
         return occupiedTimeSlots;
       }
-      // New TimeRange overlaps with an already existing meeting.
       if (timeSlot.overlaps(addedTimeSlot)) {
+        // New TimeRange overlaps with an already existing meeting.
         addTimeRange(occupiedTimeSlots, mergeTimeRanges(timeSlot, addedTimeSlot));
         return occupiedTimeSlots;
       }
@@ -80,8 +80,8 @@ public final class FindMeetingQuery {
     ArrayList<TimeRange> occupiedTimeRangesForRequestAttendees = new ArrayList<TimeRange>();
     for (Event meeting : events) {
       for (String attendee : meeting.getAttendees()) {
-        // If the meeting contains a requested attendee it is added.
         if (requestAttendees.contains(attendee)) {
+          // If the meeting contains a requested attendee it is added.
           occupiedTimeRangesForRequestAttendees = addTimeRange(occupiedTimeRangesForRequestAttendees,
               meeting.getWhen());
           break;
@@ -98,20 +98,20 @@ public final class FindMeetingQuery {
   private Collection<TimeRange> getFreeTimeSlots(ArrayList<TimeRange> occupiedTimeSlots, 
       long duration) {
     Collection<TimeRange> possibleTimeSlots = new ArrayList<>();
-    // Return all available if there are no occupied TimeRanges.
     if (occupiedTimeSlots.isEmpty()) {
+      // Return all available if there are no occupied TimeRanges.
       possibleTimeSlots.add(TimeRange.WHOLE_DAY);
       return possibleTimeSlots;
     }
-    // From midnight to the first meeting.
     if (occupiedTimeSlots.get(0).start() - TimeRange.START_OF_DAY >= duration) {
+      // From midnight to the first meeting.
       possibleTimeSlots.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY, 
           occupiedTimeSlots.get(0).start(), false));
     }
     int previousEnd = occupiedTimeSlots.get(0).end();
-    // Check for spaces between occupied TimeRanges. The for loop starts in the 1 slot
-    // because the 0 slot was already processed out of the for loop.
     for (int index = 1; index < occupiedTimeSlots.size(); index++) {
+      // Check for spaces between occupied TimeRanges. The for loop starts in the 1 slot because 
+      // the 0 slot was already processed out of the for loop.
       int currentStart = occupiedTimeSlots.get(index).start();
       int diff = currentStart - previousEnd;
       if (currentStart - previousEnd >= duration) {
@@ -119,8 +119,8 @@ public final class FindMeetingQuery {
       }
       previousEnd = occupiedTimeSlots.get(index).end();
     }
-    // From last meeting to right before midnight.
     if (TimeRange.END_OF_DAY - previousEnd >= duration) {
+      // From last meeting to right before midnight.
       possibleTimeSlots.add(TimeRange.fromStartEnd(previousEnd, TimeRange.END_OF_DAY, true));
     }
     return possibleTimeSlots;
@@ -133,13 +133,13 @@ public final class FindMeetingQuery {
     Collection<TimeRange> possibleTimeSlots = new ArrayList<>();
     long meetingDuration = request.getDuration();
     HashSet<String> requestAttendees = requestAttendeesToSet(request);
-    // No attendees = no time restrictions = all day available.
     if (requestAttendees.isEmpty()) {
+      // No attendees = no time restrictions = all day available.
       possibleTimeSlots.add(TimeRange.WHOLE_DAY);
       return possibleTimeSlots;
     }
-    // Duration lasts more than the whole day = not possible to have the meeting.
     if (request.getDuration() > 1440) {
+      // Duration lasts more than the whole day = not possible to have the meeting.
       return possibleTimeSlots;
     }
     // Define available space by first defining the already occupied TimeRanges.
